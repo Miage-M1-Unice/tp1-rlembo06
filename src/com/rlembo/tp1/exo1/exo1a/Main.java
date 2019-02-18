@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.rlembo.exo1.exo1a;
+package com.rlembo.tp1.exo1.exo1a;
 
 import java.io.File;
 import java.io.FilenameFilter;

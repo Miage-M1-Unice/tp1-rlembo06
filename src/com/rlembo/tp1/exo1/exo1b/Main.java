@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.rlembo.exo1.exo1b;
+package com.rlembo.tp1.exo1.exo1b;
 
-import com.rlembo.exo1.exo1a.Directory;
+import com.rlembo.tp1.exo1.exo1a.Directory;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
