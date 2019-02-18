@@ -34,14 +34,13 @@ public class AnalyseurDeClasse {
 
         // Récupération de la superclasse si elle existe (null si cl est le type Object)
         Class supercl = cl.getSuperclass();
-        System.out.print("\n");
         System.out.println("Nom de la super classe : " + getSuperclass(cl));
 
         // Affichage des interfaces que la classe implemente
         afficherInterfaces(cl);
     }
     
-    public static void afficherInterfaces(Class cl) {
+    public void afficherInterfaces(Class cl) {
         Class[]interfaces  = cl.getInterfaces();
         
         System.out.println("Interface(s) :");
@@ -58,7 +57,7 @@ public class AnalyseurDeClasse {
         return null;
     }
 
-    public static void afficheAttributs(Class cl) {
+    public void afficheAttributs(Class cl) {
         Field[] attributs = cl.getFields();
       
         System.out.println("Attribut(s) :");
@@ -67,7 +66,7 @@ public class AnalyseurDeClasse {
         }
     }
 
-    public static void afficheConstructeurs(Class cl) {
+    public void afficheConstructeurs(Class cl) {
         Constructor[] constructors = cl.getConstructors();
         
         System.out.println("Constructeur(s) :");
@@ -76,7 +75,7 @@ public class AnalyseurDeClasse {
         }
     }
     
-    public static void afficheMethodes(Class cl) {
+    public void afficheMethodes(Class cl) {
         Method[] methods = cl.getMethods();
         
         System.out.println("Methode(s) :");
