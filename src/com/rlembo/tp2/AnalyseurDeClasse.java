@@ -34,17 +34,20 @@ public class AnalyseurDeClasse {
 
         // Récupération de la superclasse si elle existe (null si cl est le type Object)
         Class supercl = cl.getSuperclass();
+        System.out.print("\n");
         System.out.println("Nom de la super classe : " + getSuperclass(cl));
 
-        // On ecrit le "extends " que si la superclasse est non nulle et
-        // différente de Object
-
-
         // Affichage des interfaces que la classe implemente
-        // CODE A ECRIRE
-
-        // Enfin, l'accolade ouvrante !
-        System.out.print(" {\n");
+        afficherInterfaces(cl);
+    }
+    
+    public static void afficherInterfaces(Class cl) {
+        Class[]interfaces  = cl.getInterfaces();
+        
+        System.out.println("Interface(s) :");
+        for (Class inter : interfaces) {
+            System.out.println("-"+ inter.getName());
+        }
     }
   
     public Class getSuperclass(Class cl) {
