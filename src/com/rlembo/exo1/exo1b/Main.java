@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.rlembo.exo1b;
+package com.rlembo.exo1.exo1b;
 
-import com.rlembo.exo1a.*;
+import com.rlembo.exo1.exo1a.Directory;
 import java.io.File;
 import java.io.FilenameFilter;
 
@@ -21,8 +21,9 @@ public class Main {
     public static void main(String[] args) {
         Directory dir = new Directory("./");
         
+        
         // Exercice 1.A.1 :
-        System.out.println("1.B) list : ");
+        System.out.println("1.B) : ");
         for (String item : dir.getContentDir()) {
             System.out.println(item);
         }
