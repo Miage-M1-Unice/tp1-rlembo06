@@ -8,6 +8,8 @@ package com.rlembo.exo1.exo1b;
 import com.rlembo.exo1.exo1a.Directory;
 import java.io.File;
 import java.io.FilenameFilter;
+import java.io.IOException;
+import java.nio.file.Files;
 
 /**
  *
@@ -19,13 +21,16 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Directory dir = new Directory("./");
+       FilterListFiles filterListFiles = new FilterListFiles(".java");
+       ListFiles listFiles = new ListFiles();
         
-        
-        // Exercice 1.A.1 :
-        System.out.println("1.B) : ");
-        for (String item : dir.getContentDir()) {
-            System.out.println(item);
+        try {
+            System.out.println("1.B) Avec filtre : ");
+            filterListFiles.browe();
+            System.out.println("1.B) Sans filtre : ");
+            listFiles.browe();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
