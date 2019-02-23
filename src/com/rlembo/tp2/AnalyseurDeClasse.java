@@ -22,8 +22,7 @@ public class AnalyseurDeClasse {
 
 
     public static Class getClasse(String nomClasse) throws ClassNotFoundException {
-        ClassLoader classLoader = AnalyseurDeClasse.class.getClassLoader();
-        return classLoader.loadClass(nomClasse);
+        return Class.forName(nomClasse);
     }
 
     /** Cette méthode affiche par ex "public class Toto extends Tata implements Titi, Tutu {" */
@@ -83,5 +82,9 @@ public class AnalyseurDeClasse {
             System.out.println("-"+ method.getName());
         }
     }
+    
+    /*public void getRefFromField(Field field) {
+        field.getType().
+    }*/
   
 }
