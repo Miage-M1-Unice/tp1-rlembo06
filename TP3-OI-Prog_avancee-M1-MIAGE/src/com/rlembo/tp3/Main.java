@@ -21,7 +21,7 @@ public class Main {
     
     public static void main(String[] args) throws MalformedURLException {
         URL[] urls = { 
-            new URL("file://./src/com/rlembo/tp3/Test.java"),
+            new URL("file:///home/romain/Documents/Cours/Cours-Master-MIAGE/Master-1/Semestre-2/UE-Composants_logiciels_Entreprise/Programmation_avancee/TP/TPs-OI-Prog_avancee-M1-MIAGE/annexes/build/classes/Test.class"),
         };
         URLClassLoader urlClassLoader = new URLClassLoader(urls);
         
