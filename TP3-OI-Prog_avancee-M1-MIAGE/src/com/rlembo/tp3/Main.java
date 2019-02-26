@@ -5,9 +5,13 @@
  */
 package com.rlembo.tp3;
 
+import java.io.File;
+import java.lang.reflect.Field;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -17,12 +21,31 @@ public class Main {
     
     public static void main(String[] args) throws MalformedURLException {
         URL[] urls = { 
-            new URL("~/Documents/Cours/Cours-Master-MIAGE/Master-1/Semestre-2/UE-Composants_logiciels_Entreprise/Programmation_avancee/TP/TP1-OI-Prog_avancee-M1-MIAGE/src/com/rlembo/tp3/Test.java") 
+            new URL("file://./src/com/rlembo/tp3/Test.java"),
         };
         URLClassLoader urlClassLoader = new URLClassLoader(urls);
         
-        // Exception in thread "main" java.net.MalformedURLException
+        List<File> files = new ArrayList<File>();
+        for (URL url : urlClassLoader.getURLs()) {
+            files.add(new File(url.getFile()));
+        }
+        
+        for (File file : files) {
+            displayFieldsFromClassFile(file);
+        }
+        
         System.out.println("URLClassLoader: "+ urlClassLoader);
+    }
+    
+    public static void displayFieldsFromClassFile(File file) {
+        Class cl = file.getClass();
+        Field[] fields = cl.getDeclaredFields();
+
+        System.out.println("CLASSE : "+ cl.getName() + "\n");
+        System.out.println("Fields : \n");
+        for (Field field : fields) {
+            System.out.println(field + "\r");
+        }
     }
     
 }

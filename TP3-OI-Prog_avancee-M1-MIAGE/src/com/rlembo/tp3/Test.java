@@ -11,4 +11,6 @@ package com.rlembo.tp3;
  */
 public class Test {
     
+    private String attribute = "test";
+    
 }
