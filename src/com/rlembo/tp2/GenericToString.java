@@ -5,9 +5,10 @@
  */
 package com.rlembo.tp2;
 
-import java.awt.*;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
+import java.util.Arrays;
+import java.util.stream.Stream;
 
 /**
  *
@@ -15,7 +16,7 @@ import java.lang.reflect.Field;
  */
 public class GenericToString {
     
-    private String PolygonToString(Object object) {
+    private String polygonToString(Object object) {
         
         String string = "";
         
@@ -32,7 +33,20 @@ public class GenericToString {
         
         return string;
     }
-            
+     
+    private Field[] getFieldsFromSuperClass(Class cl,  Field[] fields) {
+        Class superclass = cl.getSuperclass();
+
+        while (superclass != null) {
+            Field[] superFields = superclass.getDeclaredFields();
+
+            fields = Stream.concat(Arrays.stream(fields), Arrays.stream(superFields)).toArray(Field[]::new);
+
+            superclass = superclass.getSuperclass();
+        }
+        return fields;
+    }
+    
     public String toString(Object object, int profondeur) throws IllegalAccessException {
         if (profondeur == 0) {
             return object + "";
@@ -46,6 +60,8 @@ public class GenericToString {
         string += "[";
 
         Field[] fields = cl.getDeclaredFields();
+        
+        fields = getFieldsFromSuperClass(cl, fields);
 
         for (int i = 0; i < fields.length; i++) {
             Field field = fields[i];
@@ -60,7 +76,7 @@ public class GenericToString {
                 if (field.getType().isPrimitive()) {
                     string += fieldObject;
                 } else if (field.getType().isArray()) {
-                    string += PolygonToString(fieldObject);
+                    string += polygonToString(fieldObject);
                 } else {
                     // Récursivité :
                     string += toString(fieldObject, profondeur - 1);
