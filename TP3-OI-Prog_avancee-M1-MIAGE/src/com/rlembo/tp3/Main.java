@@ -19,32 +19,21 @@ import java.util.List;
  */
 public class Main {
     
-    public static void main(String[] args) throws MalformedURLException {
-        URL[] urls = { 
-            new URL("file:///home/romain/Documents/Cours/Cours-Master-MIAGE/Master-1/Semestre-2/UE-Composants_logiciels_Entreprise/Programmation_avancee/TP/TPs-OI-Prog_avancee-M1-MIAGE/annexes/build/classes/Test.class"),
-        };
-        URLClassLoader urlClassLoader = new URLClassLoader(urls);
+    
+    public static void main(String args[]) throws MalformedURLException, ClassNotFoundException {
+        URL classUrl = new URL("file:///home/romain/Documents/Cours/Cours-Master-MIAGE/Master-1/Semestre-2/UE-Composants_logiciels_Entreprise/Programmation_avancee/TP/TPs-OI-Prog_avancee-M1-MIAGE/annexes/build/classes/");
         
-        List<File> files = new ArrayList<File>();
-        for (URL url : urlClassLoader.getURLs()) {
-            files.add(new File(url.getFile()));
-        }
-        
-        for (File file : files) {
-            displayFieldsFromClassFile(file);
-        }
-        
-        System.out.println("URLClassLoader: "+ urlClassLoader);
+        URL[] urls = { classUrl };
+
+        URLClassLoader ucl = new URLClassLoader(urls);
+
+        displayFieldsFromClass(ucl.loadClass("Test"));
     }
     
-    public static void displayFieldsFromClassFile(File file) {
-        Class cl = file.getClass();
-        Field[] fields = cl.getDeclaredFields();
-
+    public static void displayFieldsFromClass(Class cl) {
         System.out.println("CLASSE : "+ cl.getName() + "\n");
-        System.out.println("Fields : \n");
-        for (Field field : fields) {
-            System.out.println(field + "\r");
+        for(Field f: cl.getDeclaredFields()) {
+            System.out.println("- Field name : " + f.getName());
         }
     }
     
